@@ -1,0 +1,50 @@
+{% extends "home.html" %}
+{% block title %}Records by Magnitude & Depth Range{% endblock %}
+{% block content %}
+<div class="container-fluid">
+{% if form != Null %}
+    <div class="form-group">
+        <form action="/third" method="POST">
+            {{ form.csrf_token() }}
+            {{ form.mag1.label }} {{ form.mag1 }}<br/>
+            {{ form.mag2.label }} {{ form.mag2 }}<br/>
+            {{ form.data1.label }} {{ form.data1 }}<br/>
+            {{ form.data2.label }} {{ form.data2 }}<br/>
+            {{ form.submit }}
+        </form>
+    </div>
+{% endif %}
+{% if error %}
+    <b>{{ error }}</b>
+{% endif %}
+{% if data == 1 %}
+    <b>Number of Records are:- {{ count }}</b><br/><br/>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(draw);
+
+      function draw() {
+        var data = google.visualization.arrayToDataTable([
+          ['Magnitude' , 'Magnitude, Depth'],
+          {% for magnitude,record in result.items() %}
+            [{{ record[0] }},{{ record[1] }}],
+          {% endfor %}
+        ]);
+
+        var opt = {
+          title: 'Magnitude and Depth Comparison with Scatter Graph:-',
+          hAxis: {title: 'Magnitude', minValue: {{ mag1 }}, maxValue: {{ mag2 }} + 1 },
+          vAxis: {title: 'Depth', minValue: {{ data1 }} - 1, maxValue: {{ data2 }} + 1 },
+          legend: 'none'
+        };
+
+        var graphchart = new google.visualization.ScatterChart(document.getElementById('chartgraph'));
+        graphchart.draw(data, opt);
+      }
+    </script>
+    <div id="chartgraph" class="container-small" style="width: 100%; height: 500px;" ></div>
+{% endif %}
+</div>
+{% endblock %}

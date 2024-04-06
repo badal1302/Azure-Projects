@@ -1,0 +1,52 @@
+{% extends "home.html" %}
+
+{% block title %}
+    Magnitude-based Records
+{% endblock %}
+
+{% block content %}
+    {% if error %}
+        <strong>{{ error }}</strong>
+    {% endif %}
+
+    {% if data == 1 %}
+        <strong>Total Records are:</strong> {% print(result) %}<br/>
+        <strong>Number of Records are:</strong> {{ count }}
+
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var datachart = google.visualization.arrayToDataTable([
+                    ['Magnitude Category', 'Magnitude Value'],
+                    {% for category, value in result.items() %}
+                        ['{{ category }}', {{ value }}],
+                    {% endfor %}
+                ]);
+
+                var opt = {
+                    title: 'Magnitude Distribution of Earthquake Records',
+                    
+                    colors: ['DarkGray','indianRed','LightBlue', 'DarkSlateGray', 'Thistle', 'PaleGreen']
+                };
+
+                var chartview = new google.visualization.PieChart(document.getElementById('graphchart'));
+                chartview.draw(datachart, opt);
+            }
+        </script>
+        <style>
+            #graphchart {
+                width: 100%;
+                height: 500px;
+                margin: 20px auto;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            }
+        </style>
+
+        <div id="graphchart" class="container-small" style="width: 100%; height: 500px;"></div>
+    {% endif %}
+{% endblock %}

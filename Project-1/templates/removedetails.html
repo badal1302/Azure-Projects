@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>Remove - Badal</title>
+</head>
+<style>
+    body {
+        background-color: #fff5d7;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h3, h4 {
+        text-align: center;
+    }
+    
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: 20px auto;
+        padding: 8px;
+    }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    td a {
+        text-decoration: none;
+    }
+    
+    td a:hover {
+        font-weight: bold;
+    }
+</style>
+<body>
+<center><h3>CSE 6332 - Assignment-01</h3></center>
+<center><h4>Badal Dharmeshbhai Patel - 1002085523</h4></center><br/><br/>
+<table style="border: 1px solid black; padding: 8px;">
+    <tr><td>1</td><td><a href="/">Home</a></td></tr>
+    <tr><td>2</td><td><a href="/add">Upload CSV File.</a></td></tr>
+    <tr><td>3</td><td><a href="/findpic">Search image by Name.</a></td></tr>
+    <tr><td>4</td><td><a href="/searchpicbysal">All images where Salary is less then 99000.</a></td></tr>
+    <tr><td>5</td><td><a href="/remove">Remove Record.</a></td></tr>
+    <tr><td>6</td><td><a href="/edit">Edit Details.</a></td></tr>
+    <tr><td>7</td><td><a href="/uploadpic">Upload Image.</a></td></tr>
+</table><br/><br/><br/>
+
+ {%if message%}
+  {{message}}
+    {%endif%}
+    {%if error%}
+        {{error}}
+    {%endif%}
+
+</body>
+</html>

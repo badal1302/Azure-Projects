@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    
+    <style>
+        body {
+            background-color: #FFEBCD;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container-small {
+            margin-top: 20px;
+        }
+        
+        .abc {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        td {
+            border-top: 1px solid #ddd;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-small">
+        <div class="abc">
+            <h3> Badal Patel - 1002085523</h3>
+            <h3>2235 - CSE 6332 - 002 - Assignment 02</h3>
+        </div>
+    </div>
+    <div class="container">
+                <table>
+                    <tr><th>1</th><th><a href="/">Home</a></li>
+                    <tr><th>2</th><th><a href="/first">Find Magnitude whichh is greater 5</a></th></tr>
+                    <tr><th>3</th><th><a href="/second">Find by Mag Range & specific Days</a></th></tr>
+                    <tr><th>4</th><th><a href="/third">Find by specified Location</a></th></tr>
+                    <tr><th>5</th><th><a href="/fourth">Search by Clusters</a></th></tr>
+                    <tr><th>6</th><th><a href="/fifth">Find that is Large Mag(>4.0) occur often in night?</a></th></tr>
+                </table>
+    </div>
+    <div class="container-small">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+</body>
+</html>

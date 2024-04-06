@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .container-small {
+            margin-top: 20px;
+        }
+        
+        .abc {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        h3 {
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin-top: 0;
+            padding-left: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            font-weight: bold;
+        }
+        
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            font-size: 14px;
+        }
+        
+        input[type="submit"] {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-small">
+        <div class="abc">
+            <h3> Badal Patel - 1002085523</h3>
+            <h3>2235 - CSE 6332 - 002 - Assignment 05</h3>
+        </div>
+    </div>
+    <h1>Search Results</h1>
+    {% if find_results %}
+        <h2>Search Term: {{ find_word }}</h2>
+        <h3>Matching Files:</h3>
+        <ul>
+            {% for file in find_file %}
+                <li>{{ file }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Matching Lines:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>Matching Line</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for line, line_num in find_results %}
+                    <tr>
+                        <td>{{ line_num }}</td>
+                        <td>{{ line }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No matching results found.</p>
+    {% endif %}
+    <hr>
+    <form action="{{ url_for('first') }}" method="POST">
+        {{ form.csrf_token }}
+        {{ form.y.label }} {{ form.y }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>

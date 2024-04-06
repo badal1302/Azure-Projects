@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Piles of Stones Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+          }
+          
+          h1 {
+            text-align: center;
+            color: #333;
+          }
+          
+          form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          }
+          
+          label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+          }
+          
+          input[type="number"],
+          input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+          
+          input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+          }
+          
+          input[type="submit"]:hover {
+            background-color: #555;
+          }
+          body {
+            background-color: #FFEBCD;
+            font-family: Arial, sans-serif;
+        }
+        .container-small {
+        margin-top: 20px;
+    }
+    
+    .abc {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container-small">
+        <div class="abc">
+            <h3> Badal Patel - 1002085523</h3>
+            <h3>2235 - CSE 6332 - 002 - Assignment 06</h3>
+        </div>
+    </div>
+    <h1>Piles of Stones Game</h1>
+    <form action="/start_game" method="post">
+        <label for="pile1">Pile 1:</label>
+        <input type="number" name="pile1" id="pile1" required>
+        <br>
+        <label for="pile2">Pile 2:</label>
+        <input type="number" name="pile2" id="pile2" required>
+        <br>
+        <label for="pile3">Pile 3:</label>
+        <input type="number" name="pile3" id="pile3" required>
+        <br>
+        <label for="player1_name">Player 1 Name:</label>
+        <input type="text" name="player1_name" id="player1_name" required>
+        <br>
+        <label for="player2_name">Player 2 Name:</label>
+        <input type="text" name="player2_name" id="player2_name" required>
+        <br>
+        <label for="min_pickup">Minimum Stones Pickup:</label>
+        <input type="number" name="min_pickup" id="min_pickup" required>
+        <br>
+        <label for="max_pickup">Maximum Stones Pickup:</label>
+        <input type="number" name="max_pickup" id="max_pickup" required>
+        <br>
+        <label for="judge_name">Judge Name:</label>
+        <input type="text" name="judge_name" id="judge_name" required>
+        <br>
+        <input type="submit" value="Start Game">
+    </form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "home.html" %}
+{% block title %}Magnitude Records by Category{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+<div class="form-group">
+    <form action="/fourth" method="POST">
+        <label for="type">Select Category: </label>
+        <select name="type" id="type">
+            <option value="earthquake">Earthquake</option>
+            <option value="ice quake">Ice Quake</option>
+            <option value="explosion">Explosion</option>
+            <option value="quarry blast">Quarry Blast</option>
+            <option value="other event">Other Event</option>
+        </select><br/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% if error %}
+    <b>{{ error }}</b>
+{% endif %}
+{% if data == 1 %}
+    <b>Total No. of Records :- {{ cnt }}</b><br/><br/>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(draw);
+      function draw() {
+        var dataa = google.visualization.arrayToDataTable([
+          ['Magnitude Type','Magnitude Value'],
+                {% for magnitude,records in result.items() %}
+                        ['{{ magnitude }}',{{ records }}],
+                {% endfor %}
+        ]);
+
+        var opt = {
+          title: 'Magnitude Records by Category - {{ type }}',
+          pieHole: 0.3,
+          colors: ['DarkGray','indianRed','LightBlue', 'DarkSlateGray', 'Thistle', 'PaleGreen']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('drawgraph'));
+        chart.draw(dataa, opt);
+      }
+    </script>
+
+    <div id="drawgraph" class="container-small" style="height: 450px; width: 100%; " ></div>
+
+{% endif %}
+</div>
+{% endblock %}
