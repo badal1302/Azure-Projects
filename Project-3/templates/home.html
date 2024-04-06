@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        
+            body {
+                background-color: #FFEBCD;
+                font-family: Arial, sans-serif;
+            }
+            
+            .container-small {
+                margin-top: 20px;
+            }
+            
+            .abc {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            table {
+                margin: 0 auto;
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 400px;
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+            
+            th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+            
+            td {
+                border-top: 1px solid #ddd;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #333;
+            }
+            
+            a:hover {
+                color: #000;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-group form {
+                display: inline-block;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            
+            .form-group input[type="text"],
+            .form-group input[type="number"],
+            .form-group select {
+                width: 100%;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            
+            .form-group input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin-top: 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+            
+            .form-group input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container-small">
+        <div class="abc">
+            <h3> Badal Patel - 1002085523</h3>
+            <h3>2235 - CSE 6332 - 002 - Assignment 03</h3>
+        </div>
+    </div>
+    <div class="container">
+        <table>
+            <tr><th>1</th><th><a href="/">Home</a></li>
+            <tr><th>2</th><th><a href="/first">Que-1 - With using RDB SQL</a></th></tr>
+            <tr><th>3</th><th><a href="/second">Que-2 - With using RDB SQL</a></th></tr>
+        </table>
+</div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

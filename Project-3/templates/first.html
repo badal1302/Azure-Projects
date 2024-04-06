@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% block title %}RDB SQL - Without Cache - Badal{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    {% if form != None %}
+        <div class="form-group">
+            <form action="/first" method="POST">
+                {{ form.csrf_token }}
+                {{ form.number.label }} {{ form.number }}<br/>
+                {{ form.submit }}
+            </form>
+        </div><br/><br/>
+    {% endif %}
+    {% if error %}
+    <h4>{{ error }}</h4>
+    {% endif %}
+    {% if data == 1 %}
+        <h3>Query Execution Time for {{ number }} rows using <b>RDBB SQL - Without Cache</b> is <b>{{ different1 }}</b> seconds.</h3>
+        <h3>Query Execution Time for {{ number }} rows using <b>RDB SQL - With Cache</b> is <b>{{ different2 }}</b> seconds.</h3>
+    
+    {% endif %}
+</div>
+{% endblock %}
